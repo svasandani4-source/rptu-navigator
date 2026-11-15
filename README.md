@@ -42,6 +42,17 @@ Run `python -m navigator.evaluate` and paste your table here (do not guess numbe
 | dense       |   0.467 |   0.683 |   0.733 |    0.596 |
 | hybrid_rrf  |   0.35  |   0.717 |   0.833 |    0.554 |
 
+## How to read these results
+
+Each retriever is tested on 60 synthetic questions. An LLM wrote one question per sampled page chunk, so the correct source page is known. Retrieval is scored before any answer is generated:
+
+- **hit@k:** the share of questions where the correct page is among the top k results (k = 1, 3, 5).
+- **mrr@10:** the average of 1 / (rank of the correct page), counting 0 if it is not in the top 10. Higher means the right page is ranked closer to the top.
+
+Retrievers compared: `bm25` (keyword matching), `dense` (multilingual embeddings, meaning-based) and `hybrid_rrf` (Reciprocal Rank Fusion of both).
+
+**Limitations:** the questions are LLM-generated and may overlap more in wording with their source page than real student questions do, which can favor keyword search. 60 questions is a small sample, so differences of a few points are within noise. The benchmark checks that the right page is found, not that the final answer is correct.
+
 ## Responsible use
 
 - The crawler honors `robots.txt`, sends a descriptive User-Agent, waits 1 s between requests, and stays on `*.rptu.de`.
