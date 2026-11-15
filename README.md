@@ -36,11 +36,11 @@ python -m pytest                               # offline unit tests
 
 Run `python -m navigator.evaluate` and paste your table here (do not guess numbers):
 
-| retriever | hit@1 | hit@3 | hit@5 | mrr@10 |
-|---|---|---|---|---|
-| bm25 | | | | |
-| dense | | | | |
-| hybrid_rrf | | | | |
+| retriever   |   hit@1 |   hit@3 |   hit@5 |   mrr@10 |
+|:------------|--------:|--------:|--------:|---------:|
+| bm25        |   0.217 |   0.6   |   0.667 |    0.414 |
+| dense       |   0.467 |   0.683 |   0.733 |    0.596 |
+| hybrid_rrf  |   0.35  |   0.717 |   0.833 |    0.554 |
 
 ## Responsible use
 
